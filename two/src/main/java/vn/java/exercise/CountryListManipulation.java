@@ -1,7 +1,11 @@
 package vn.java.exercise;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import vn.java.exercise.rdo.CountriesRDO;
 
@@ -48,5 +52,18 @@ public class CountryListManipulation {
         }
 
         return countryMaxLang;
+    }
+
+    public int getNumberOfLanguages(){
+        List<String> officialList = new ArrayList<>();
+        Set<String> officialListNoDup = null;
+
+        for (CountriesRDO country : this.countriesList) {
+            officialList.addAll(country.getLanguages());
+        }
+        
+        officialListNoDup = new HashSet<String>(officialList);
+
+        return officialListNoDup.size();
     }
 }

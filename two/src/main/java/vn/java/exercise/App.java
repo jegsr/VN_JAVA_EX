@@ -28,9 +28,11 @@ public class App {
             CountryListManipulation listManipulation = new CountryListManipulation(countriesList);
             int numberOfCountries = listManipulation.getNumberOfCountries();
             String countryMostLang = listManipulation.getCountryWithMostOfficialLang();
+            int numberOfOfficialLang = listManipulation.getNumberOfLanguages();
 
             System.out.println("Number of Countries in the World -> " + numberOfCountries);
             System.out.println("Country with most official Languages where they speak German -> " + countryMostLang);
+            System.out.println("Number of Official Languages -> " + numberOfOfficialLang);
         } catch (IOException e) {
             throw new Exception(e.getMessage(), e);
         }
