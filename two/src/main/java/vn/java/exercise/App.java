@@ -15,17 +15,26 @@ import vn.java.exercise.rdo.CountriesRDO;
  *
  */
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        //Path to the JSON File
+        String jsonFile = "src\\resource\\languageByCountry.json";
         // ObjectMapper instantiation
         ObjectMapper objectMapper = new ObjectMapper();
-
+       
         try {
-            List<CountriesRDO> myObjects = objectMapper.readValue(Paths.get("src\\resource\\languageByCountry.json").toFile(), new TypeReference<List<CountriesRDO>>(){});
-            System.out.println(myObjects.get(0).country);
+             //Json to Object
+            List<CountriesRDO> countriesList = objectMapper.readValue(Paths.get(jsonFile).toFile(), new TypeReference<List<CountriesRDO>>(){});
+
+            CountryListManipulation listManipulation = new CountryListManipulation(countriesList);
+            int numberOfCountries = listManipulation.getNumberOfCountries();
+            
+            System.out.println("Number of Countries in the World -> " + numberOfCountries);
         } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            throw new Exception(e.getMessage(), e);
         }
+
+
+      
 
         // Print information
         
