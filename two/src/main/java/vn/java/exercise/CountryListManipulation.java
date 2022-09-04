@@ -35,7 +35,7 @@ public class CountryListManipulation {
         return numberCountries;
     }
 
-    public String getCountryWithMostOfficialLang() {
+    public String getCountryWithMostOfficialLangGerman() {
         int numberLang = 0;
         String languageToFind = "de";
         String countryMaxLang = null;
@@ -65,5 +65,21 @@ public class CountryListManipulation {
         officialListNoDup = new HashSet<String>(officialList);
 
         return officialListNoDup.size();
+    }
+
+    public String getCountryWithHighestOffLang() {
+        int numberLang = 0;
+        String countryMaxLang = null;
+
+        for (CountriesRDO country : this.countriesList) {
+                int arraySize = country.getLanguages().size();
+
+                if (numberLang < arraySize) {
+                    numberLang = arraySize;
+                    countryMaxLang = country.getCountry();
+                }
+        }
+
+        return countryMaxLang;
     }
 }
