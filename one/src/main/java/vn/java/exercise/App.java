@@ -8,6 +8,7 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        PrintIntegers printClass = new PrintIntegers();
+        printClass.printAllIntegers(1,500);
     }
 }
